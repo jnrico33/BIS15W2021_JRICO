@@ -147,7 +147,7 @@ all_harry_potter_matrix<- rbind(all_harry_potter_matrix, total)
 all_harry_potter_matrix
 
 ```
-Ran this 3 times and I'm not sure how to remove the other two lines
+Ran this 4 times and I'm not sure how to remove the other lines
 
 
 ## A few Extras
