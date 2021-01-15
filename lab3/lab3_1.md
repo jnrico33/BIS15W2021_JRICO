@@ -1,6 +1,6 @@
 ---
 title: "Data Frames"
-date: "2021-01-12"
+date: "2021-01-15"
 output:
   html_document: 
     theme: spacelab
@@ -241,9 +241,9 @@ hsprings
 2. Change the column titled `name` to `scientist`, leave the other column names the same. Print out the data frame names.  
 
 ```r
-hbirds <- data.frame(temp_C, scientist=name, spring)
+hssprings <- data.frame(temp_C, scientist=name, spring)
 
-names(hbirds)
+names(hssprings)
 ```
 
 ```
@@ -254,8 +254,8 @@ names(hbirds)
 
 ```r
 depth_ft <- c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)
-hbirds <- cbind(hbirds,depth_ft )
-hbirds
+hssprings <- cbind(hssprings,depth_ft )
+hssprings
 ```
 
 ```
@@ -274,7 +274,7 @@ hbirds
 4. Calculate the mean temperature of all of the temperature measurements.
 
 ```r
-mean(hbirds [, 1])
+mean(hssprings [, 1])
 ```
 
 ```
@@ -284,7 +284,7 @@ mean(hbirds [, 1])
 5. Save your hot springs data as a `.csv` file! Do not allow row names. 
 
 ```r
-write.csv(hbirds, "hbirds_data.csv", row.names = FALSE)
+write.csv(hssprings, "hssprings_data.csv", row.names = FALSE)
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  

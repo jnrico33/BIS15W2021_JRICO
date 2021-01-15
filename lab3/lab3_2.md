@@ -1,6 +1,6 @@
 ---
 title: "Importing Data Frames"
-date: "2021-01-12"
+date: "2021-01-15"
 output:
   html_document: 
     theme: spacelab
@@ -218,7 +218,24 @@ Once data have been uploaded, you may want to get an idea of its structure, cont
 We can summarize our data frame with the`summary()` function.  
 
 ```r
-#summary(fish)
+summary(fish)
+```
+
+```
+##     lakeid             fish_id       annnumber             length     
+##  Length:4033        Min.   :  1.0   Length:4033        Min.   : 58.0  
+##  Class :character   1st Qu.:156.0   Class :character   1st Qu.:253.0  
+##  Mode  :character   Median :267.0   Mode  :character   Median :299.0  
+##                     Mean   :258.3                      Mean   :293.3  
+##                     3rd Qu.:376.0                      3rd Qu.:342.0  
+##                     Max.   :478.0                      Max.   :420.0  
+##  radii_length_mm    scalelength     
+##  Min.   : 0.4569   Min.   : 0.6282  
+##  1st Qu.: 2.3252   1st Qu.: 4.2596  
+##  Median : 3.5380   Median : 5.4062  
+##  Mean   : 3.6589   Mean   : 5.3821  
+##  3rd Qu.: 4.8229   3rd Qu.: 6.4145  
+##  Max.   :11.0258   Max.   :11.0258
 ```
 
 `glimpse()` is another useful summary function.

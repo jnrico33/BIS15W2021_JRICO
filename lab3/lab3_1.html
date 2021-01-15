@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-01-12" />
+<meta name="date" content="2021-01-15" />
 
 <title>Data Frames</title>
 
@@ -1544,7 +1544,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Data Frames</h1>
-<h4 class="date">2021-01-12</h4>
+<h4 class="date">2021-01-15</h4>
 
 </div>
 
@@ -1677,16 +1677,16 @@ hsprings</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Change the column titled <code>name</code> to <code>scientist</code>, leave the other column names the same. Print out the data frame names.</li>
 </ol>
-<pre class="r"><code>hbirds &lt;- data.frame(temp_C, scientist=name, spring)
+<pre class="r"><code>hssprings &lt;- data.frame(temp_C, scientist=name, spring)
 
-names(hbirds)</code></pre>
+names(hssprings)</code></pre>
 <pre><code>## [1] &quot;temp_C&quot;    &quot;scientist&quot; &quot;spring&quot;</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Our scientists forgot to record the depth data for each spring. Here it is as a vector, add it as a new column called depth_ft: <code>c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)</code>. Print out the data frame.</li>
 </ol>
 <pre class="r"><code>depth_ft &lt;- c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)
-hbirds &lt;- cbind(hbirds,depth_ft )
-hbirds</code></pre>
+hssprings &lt;- cbind(hssprings,depth_ft )
+hssprings</code></pre>
 <pre><code>##   temp_C scientist     spring depth_ft
 ## 1  36.25      Jill    Buckeye     4.15
 ## 2  35.40     Susan    Buckeye     4.13
@@ -1700,12 +1700,12 @@ hbirds</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Calculate the mean temperature of all of the temperature measurements.</li>
 </ol>
-<pre class="r"><code>mean(hbirds [, 1])</code></pre>
+<pre class="r"><code>mean(hssprings [, 1])</code></pre>
 <pre><code>## [1] 33.37222</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Save your hot springs data as a <code>.csv</code> file! Do not allow row names.</li>
 </ol>
-<pre class="r"><code>write.csv(hbirds, &quot;hbirds_data.csv&quot;, row.names = FALSE)</code></pre>
+<pre class="r"><code>write.csv(hssprings, &quot;hssprings_data.csv&quot;, row.names = FALSE)</code></pre>
 </div>
 <div id="thats-it-take-a-break-and-i-will-see-you-on-zoom" class="section level2">
 <h2>That’s it! Take a break and I will see you on Zoom!</h2>

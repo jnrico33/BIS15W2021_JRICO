@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-01-12" />
+<meta name="date" content="2021-01-15" />
 
 <title>Importing Data Frames</title>
 
@@ -1544,7 +1544,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Importing Data Frames</h1>
-<h4 class="date">2021-01-12</h4>
+<h4 class="date">2021-01-15</h4>
 
 </div>
 
@@ -1679,7 +1679,21 @@ class(hot_springs$scientist)</code></pre>
 <h2>Summary functions</h2>
 <p>Once data have been uploaded, you may want to get an idea of its structure, contents, and dimensions. I routinely run one or more of these commands when data are first imported.</p>
 <p>We can summarize our data frame with the<code>summary()</code> function.</p>
-<pre class="r"><code>#summary(fish)</code></pre>
+<pre class="r"><code>summary(fish)</code></pre>
+<pre><code>##     lakeid             fish_id       annnumber             length     
+##  Length:4033        Min.   :  1.0   Length:4033        Min.   : 58.0  
+##  Class :character   1st Qu.:156.0   Class :character   1st Qu.:253.0  
+##  Mode  :character   Median :267.0   Mode  :character   Median :299.0  
+##                     Mean   :258.3                      Mean   :293.3  
+##                     3rd Qu.:376.0                      3rd Qu.:342.0  
+##                     Max.   :478.0                      Max.   :420.0  
+##  radii_length_mm    scalelength     
+##  Min.   : 0.4569   Min.   : 0.6282  
+##  1st Qu.: 2.3252   1st Qu.: 4.2596  
+##  Median : 3.5380   Median : 5.4062  
+##  Mean   : 3.6589   Mean   : 5.3821  
+##  3rd Qu.: 4.8229   3rd Qu.: 6.4145  
+##  Max.   :11.0258   Max.   :11.0258</code></pre>
 <p><code>glimpse()</code> is another useful summary function.</p>
 <pre class="r"><code>#glimpse(fish)</code></pre>
 <p><code>nrow()</code> gives the numbers of rows.</p>

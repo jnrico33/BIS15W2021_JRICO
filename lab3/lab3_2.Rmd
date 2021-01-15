@@ -110,7 +110,7 @@ Once data have been uploaded, you may want to get an idea of its structure, cont
 
 We can summarize our data frame with the`summary()` function.  
 ```{r}
-#summary(fish)
+summary(fish)
 ```
 
 `glimpse()` is another useful summary function.
