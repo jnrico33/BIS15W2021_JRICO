@@ -141,7 +141,10 @@ deer
 ```
 The largest deer is the Alces alces with the common name of Moose. 
 
-
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 **10. As measured by the data, which snake species has the smallest homerange? Show all of your work, please. Look this species up online and tell me about it!** **Snake is found in taxon column**   
 
 ```{r}
@@ -150,6 +153,8 @@ snake<- filter(snakes1, taxon == "snakes")
 snake
 ```
 The Western Worm Snake is the smallest of all of the snakes based on the mean.mass.g values and therefore will have the smallest home range. Sopme of them come in really amazing colors like red and black, blue and orange(kind of copper color?). Adults are usually around 7.5-11 inches and the maximum recorded total is 14.8 inches! source: https://srelherp.uga.edu/snakes/caramo.htm
+
+</div>
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
