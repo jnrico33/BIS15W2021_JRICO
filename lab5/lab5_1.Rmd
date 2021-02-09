@@ -2,10 +2,11 @@
 title: "Pipes, `mutate()`, and `if_else()`"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
     theme: spacelab
     toc: yes
     toc_float: yes
+    keep_md: yes
   pdf_document:
     toc: yes
 ---
@@ -62,7 +63,15 @@ mammals %>%
 
 ## Practice
 1. We are interested in the fish from the lakes "AL" and "AR" with a radii length between 2 and 4. Extract this information from the `fish` data. Use pipes!  
+
 ```{r}
+table(fish$lakeid)
+```
+
+```{r}
+fish %>% 
+  select(lakeid, radii_length_mm) %>% 
+  filter(lakeid == "AR"| lakeid == "AL", between(radii_length_mm,2,4))
 
 ```
 
