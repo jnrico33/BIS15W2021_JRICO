@@ -1,6 +1,6 @@
 ---
 title: "Objects, Classes & NAs"
-date: "2021-01-10"
+date: "2021-01-27"
 output:
   html_document: 
     theme: spacelab
@@ -63,6 +63,7 @@ my_experiment
 ## [1] 74
 ```
 
+
 ## Nomenclature
 We need to be careful about nomenclature when we write code. R allows us to give almost any name we want to an object, but there are exceptions. For example, we don't want to give a name to an object that is the same as a function in R.  
 
@@ -123,6 +124,10 @@ class(my_numeric)
 ## [1] "numeric"
 ```
 
+```r
+#what is the class of the object "my_numeric"
+```
+
 You can use the `is()` and `as()` functions to clarify or specify a type of data.
 
 ```r
@@ -137,6 +142,8 @@ is.integer(my_numeric) #is my_numeric an integer?
 ```r
 my_integer <- 
   as.integer(my_numeric) #create a new object specified as an integer
+
+#changes class of my_numeric to an integer
 ```
 
 
@@ -148,6 +155,41 @@ is.integer(my_integer) #is my_numeric an integer?
 ## [1] TRUE
 ```
 
+
+```r
+practice_integer <- 50L
+practice_integer
+```
+
+```
+## [1] 50
+```
+
+
+```r
+is.integer(practice_integer)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+practice_integer <- as.numeric(practice_integer)
+```
+
+
+
+```r
+is.integer(practice_integer)
+```
+
+```
+## [1] FALSE
+```
+
+# Practice_integer is now a numeric class of data
+
 ## Missing Data
 R has a special way to designate missing data, the NA. NA values in R have specific properties which are very useful if your data contains any missing values. Later this quarter we will have a session focused on dealing with NAs.  
 
@@ -155,6 +197,9 @@ NA values are used to designate missing data. `is.na` or `anyNA` are useful func
 
 ```r
 my_missing <- NA
+
+#can mean that data is not available; don't have a specimen to measure a value
+#can also mean it's not applicable; 
 ```
 
 
@@ -166,6 +211,10 @@ is.na(my_missing)
 ## [1] TRUE
 ```
 
+```r
+#is there any NA's in my_missing
+```
+
 
 ```r
 anyNA(my_missing)
@@ -174,6 +223,45 @@ anyNA(my_missing)
 ```
 ## [1] TRUE
 ```
+
+```r
+#are there any Na's in my_missing 
+```
+
+
+```r
+new_NA_practice <- c(10, NA,20)
+new_NA_practice
+```
+
+```
+## [1] 10 NA 20
+```
+
+```r
+is.na(new_NA_practice)
+```
+
+```
+## [1] FALSE  TRUE FALSE
+```
+
+```r
+#will tell us each value if it's true or false
+```
+
+```r
+anyNA(new_NA_practice)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+#won't tell us where the NA is, just that there is one
+```
+
 
 ## Practice  
 1. Let's create a vector that includes some missing data (we will discuss vectors more in part 2). For now, run the following code chunk.  
@@ -194,13 +282,13 @@ mean(new_vector)
 
 3. How do you interpret this result? What does this mean about NAs?  
 
-this means that the NAs are being looked at as just another item within the set of data. 
+We need to find a way to remove them because otherwise our functions won't work as we intend in R. 
 
 
 4. Recalculate the mean using the following code chunk. Why is the useful?  
 
 ```r
-mean(new_vector, na.rm=T) #na.rm removes the NA values in the vector
+mean(new_vector, na.rm=TRUE) #na.rm removes the NA values in the vector
 ```
 
 ```
