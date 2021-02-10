@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jessica Rico" />
 
-<meta name="date" content="2021-01-29" />
+<meta name="date" content="2021-02-09" />
 
 <title>Midterm 1</title>
 
@@ -191,7 +191,7 @@ summary {
 
 <h1 class="title toc-ignore">Midterm 1</h1>
 <h4 class="author">Jessica Rico</h4>
-<h4 class="date">2021-01-29</h4>
+<h4 class="date">2021-02-09</h4>
 
 </div>
 
@@ -379,10 +379,9 @@ elephants</code></pre>
 <pre class="r"><code>elephants%&gt;%
   group_by(sex)%&gt;%
   summarise(avg_age= mean(age), avg_height= mean(height), total=n(), na.rm=TRUE)</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 5
 ##   sex   avg_age avg_height total na.rm
-##   &lt;fct&gt;   &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt;
+## * &lt;fct&gt;   &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt;
 ## 1 F       12.8        190.   150 TRUE 
 ## 2 M        8.95       185.   138 TRUE</code></pre>
 <pre class="r"><code>#On average, females are both older and taller than males. </code></pre>
@@ -391,7 +390,6 @@ elephants</code></pre>
   group_by(sex)%&gt;%
   filter(age&gt;25)%&gt;%
   summarise(aver_height= mean(height), min_height= min(height), max_height= max(height), total=n(), na.rm=TRUE)</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 6
 ##   sex   aver_height min_height max_height total na.rm
 ##   &lt;fct&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt;
@@ -851,10 +849,9 @@ gabon_data</code></pre>
   filter(hunt_cat!= &quot;None&quot;)%&gt;%
   group_by(hunt_cat)%&gt;%
   summarise(avg_bird_diversity= mean(diversity_bird_species), avg_mammal_diversity= mean(diversity_mammal_species), total=n(), na.rm=TRUE)</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 5
 ##   hunt_cat avg_bird_diversity avg_mammal_diversity total na.rm
-##   &lt;fct&gt;                 &lt;dbl&gt;                &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt;
+## * &lt;fct&gt;                 &lt;dbl&gt;                &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt;
 ## 1 High                   1.66                 1.74     7 TRUE 
 ## 2 Moderate               1.62                 1.68     8 TRUE</code></pre>
 <pre class="r"><code>#For transects with both high and moderate hunting intensity, the average mammal diversity is greater than that  of the average bird diversity. </code></pre>
@@ -863,10 +860,9 @@ gabon_data</code></pre>
   filter(distance &lt;5 | distance &gt; 20)%&gt;%
   group_by(distance&lt;5)%&gt;%
   summarise(across(contains(&quot;ra_&quot;), mean, na.rm=TRUE))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 7
 ##   `distance &lt; 5` ra_apes ra_birds ra_elephant ra_monkeys ra_rodent ra_ungulate
-##   &lt;lgl&gt;            &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## * &lt;lgl&gt;            &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 FALSE             7.21     44.5      0.557        40.1      2.68        4.98
 ## 2 TRUE              0.08     70.4      0.0967       24.1      3.66        1.59</code></pre>
 <p><strong>12. (4 points) Based on your interest, do one exploratory analysis on the <code>gabon</code> data of your choice. This analysis needs to include a minimum of two functions in <code>dplyr.</code></strong></p>
@@ -888,9 +884,8 @@ gabon_data</code></pre>
   select(land_use, veg_rich, veg_canopy, veg_understory) %&gt;% 
   filter(land_use!=&quot;Neither&quot;)%&gt;%
   group_by(land_use)%&gt;%
-  summarise(across(contains(&quot;veg&quot;), mean,  total=n(), , na.rm=TRUE))%&gt;%
+  summarise(across(contains(&quot;veg&quot;), mean,  total=n(),  na.rm=TRUE))%&gt;%
   arrange(desc(veg_rich))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 4
 ##   land_use veg_rich veg_canopy veg_understory
 ##   &lt;fct&gt;       &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;

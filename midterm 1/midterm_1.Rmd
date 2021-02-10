@@ -175,7 +175,7 @@ gabon_data%>%
   select(land_use, veg_rich, veg_canopy, veg_understory) %>% 
   filter(land_use!="Neither")%>%
   group_by(land_use)%>%
-  summarise(across(contains("veg"), mean,  total=n(), , na.rm=TRUE))%>%
+  summarise(across(contains("veg"), mean,  total=n(),  na.rm=TRUE))%>%
   arrange(desc(veg_rich))
 ```
 

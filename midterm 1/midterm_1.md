@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1"
 author: "Jessica Rico"
-date: "2021-01-29"
+date: "2021-02-09"
 output:
   html_document: 
     theme: spacelab
@@ -95,8 +95,8 @@ Table: Data summary
 
 **Variable type: numeric**
 
-|skim_variable | n_missing| complete_rate|   mean|   sd|    p0|    p25|    p50|    p75|   p100|hist                                     |
-|:-------------|---------:|-------------:|------:|----:|-----:|------:|------:|------:|------:|:----------------------------------------|
+|skim_variable | n_missing| complete_rate|   mean|   sd|    p0|    p25|    p50|    p75|   p100|hist  |
+|:-------------|---------:|-------------:|------:|----:|-----:|------:|------:|------:|------:|:-----|
 |Age           |         0|             1|  10.97|  8.4|  0.01|   4.58|   9.46|  16.50|  32.17|▆▇▂▂▂ |
 |Height        |         0|             1| 187.68| 50.6| 75.46| 160.75| 200.00| 221.09| 304.06|▃▃▇▇▁ |
 
@@ -181,13 +181,9 @@ elephants%>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 5
 ##   sex   avg_age avg_height total na.rm
-##   <fct>   <dbl>      <dbl> <int> <lgl>
+## * <fct>   <dbl>      <dbl> <int> <lgl>
 ## 1 F       12.8        190.   150 TRUE 
 ## 2 M        8.95       185.   138 TRUE
 ```
@@ -206,10 +202,6 @@ elephants%>%
   group_by(sex)%>%
   filter(age>25)%>%
   summarise(aver_height= mean(height), min_height= min(height), max_height= max(height), total=n(), na.rm=TRUE)
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -281,8 +273,8 @@ Table: Data summary
 
 **Variable type: numeric**
 
-|skim_variable           | n_missing| complete_rate|  mean|    sd|    p0|   p25|   p50|   p75|  p100|hist                                     |
-|:-----------------------|---------:|-------------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|:----------------------------------------|
+|skim_variable           | n_missing| complete_rate|  mean|    sd|    p0|   p25|   p50|   p75|  p100|hist  |
+|:-----------------------|---------:|-------------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|:-----|
 |TransectID              |         0|             1| 13.50|  8.51|  1.00|  5.75| 14.50| 20.25| 27.00|▇▃▅▆▆ |
 |Distance                |         0|             1| 11.88|  7.28|  2.70|  5.67|  9.72| 17.68| 26.76|▇▂▂▅▂ |
 |NumHouseholds           |         0|             1| 37.88| 17.80| 13.00| 24.75| 29.00| 54.00| 73.00|▇▇▂▇▂ |
@@ -352,13 +344,9 @@ gabon_data%>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 5
 ##   hunt_cat avg_bird_diversity avg_mammal_diversity total na.rm
-##   <fct>                 <dbl>                <dbl> <int> <lgl>
+## * <fct>                 <dbl>                <dbl> <int> <lgl>
 ## 1 High                   1.66                 1.74     7 TRUE 
 ## 2 Moderate               1.62                 1.68     8 TRUE
 ```
@@ -381,13 +369,9 @@ gabon_data%>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 7
 ##   `distance < 5` ra_apes ra_birds ra_elephant ra_monkeys ra_rodent ra_ungulate
-##   <lgl>            <dbl>    <dbl>       <dbl>      <dbl>     <dbl>       <dbl>
+## * <lgl>            <dbl>    <dbl>       <dbl>      <dbl>     <dbl>       <dbl>
 ## 1 FALSE             7.21     44.5      0.557        40.1      2.68        4.98
 ## 2 TRUE              0.08     70.4      0.0967       24.1      3.66        1.59
 ```
@@ -422,12 +406,8 @@ gabon_data%>%
   select(land_use, veg_rich, veg_canopy, veg_understory) %>% 
   filter(land_use!="Neither")%>%
   group_by(land_use)%>%
-  summarise(across(contains("veg"), mean,  total=n(), , na.rm=TRUE))%>%
+  summarise(across(contains("veg"), mean,  total=n(),  na.rm=TRUE))%>%
   arrange(desc(veg_rich))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
