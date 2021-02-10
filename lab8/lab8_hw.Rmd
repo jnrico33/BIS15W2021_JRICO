@@ -59,6 +59,7 @@ sydneybeaches <-read_csv(here("lab8", "data", "sydneybeaches.csv")) %>% janitor:
 ```{r}
 sydneybeaches_long <- sydneybeaches %>%
   select(site, date, enterococci_cfu_100ml)
+sydneybeaches_long
 ```
 
 
@@ -69,6 +70,7 @@ sydneybeaches_wide <- sydneybeaches_long %>%
   pivot_wider(names_from ="date",
              values_from ="enterococci_cfu_100ml",
              )
+sydneybeaches_wide
 ```
 
 5. Pivot the data back so that the dates are data and not column names.
@@ -94,6 +96,7 @@ sydneybeaches_dates
 sydneybeaches_long_avg <- sydneybeaches_dates %>%
   group_by(year, site) %>%
   summarize(avg_bact = mean(enterococci_cfu_100ml, na.rm=T), .groups='keep')
+sydneybeaches_long_avg
 ```
 
 
@@ -102,6 +105,7 @@ sydneybeaches_long_avg <- sydneybeaches_dates %>%
 sydneybeaches_wide_avg <- sydneybeaches_long_avg %>%
   pivot_wider(names_from = "site",
               values_from = "avg_bact")
+sydneybeaches_wide_avg
 ```
 
 
