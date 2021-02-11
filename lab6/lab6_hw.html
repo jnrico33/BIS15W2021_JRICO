@@ -407,10 +407,9 @@ fisheries_tidy$catch &lt;- as.numeric(fisheries_tidy$catch)</code></pre>
 <pre class="r"><code>fisheries_tidy%&gt;%
   group_by(country)%&gt;%
   summarise(n_distinct())</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 203 x 2
 ##    country             `n_distinct()`
-##    &lt;fct&gt;                        &lt;int&gt;
+##  * &lt;fct&gt;                        &lt;int&gt;
 ##  1 Albania                          0
 ##  2 Algeria                          0
 ##  3 American Samoa                   0

@@ -275,13 +275,9 @@ fisheries_tidy%>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 203 x 2
 ##    country             `n_distinct()`
-##    <fct>                        <int>
+##  * <fct>                        <int>
 ##  1 Albania                          0
 ##  2 Algeria                          0
 ##  3 American Samoa                   0
