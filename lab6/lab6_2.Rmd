@@ -181,11 +181,20 @@ penguins %>%
 ## Practice
 1. Produce separate summaries of the mean and standard deviation for bill_length_mm, bill_depth_mm, and flipper_length_mm for each penguin species. Be sure to provide the number of samples.  
 ```{r}
-penguins%>%
-  group_by(species)%>%
-  filter(!is.na(species))%>%
-  summarise(across(contains("mm"), mean, sd, total=n()))
+penguins %>% 
+  group_by(species) %>% 
+  summarise(across(contains("mm"), mean, na.rm=T),
+            nsamples=n())
 ```
+
+
+```{r}
+penguins %>% 
+  group_by(species) %>% 
+  summarise(across(contains("mm"), sd, na.rm=T),
+            nsamples=n())
+```
+
 
 
 ## Wrap-up  
