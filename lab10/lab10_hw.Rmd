@@ -40,6 +40,10 @@ glimpse(deserts)
 naniar::miss_var_summary(deserts)
 ```
 This data is not tidy
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 2. How many genera and species are represented in the data? What are the total number of observations? Which species is most/ least frequently sampled in the study?
 
@@ -69,6 +73,7 @@ deserts %>%
 
 #these are all the least frequently samples in the study as they all have n=1 values. 
 ```
+</div>
 
 3. What is the proportion of taxa included in this study? Show a table and plot that reflects this count.
 
