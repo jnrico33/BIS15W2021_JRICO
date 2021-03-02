@@ -1,0 +1,108 @@
+---
+title: "Lab 13 Homework"
+author: "Jessica Rico"
+date: "`r Sys.Date()`"
+output:
+  html_document: 
+    theme: spacelab
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for the included code chunks to run. Be sure to add your name to the author header above. For any included plots, make sure they are clearly labeled. You are free to use any plot type that you feel best communicates the results of your analysis.  
+
+Make sure to use the formatting conventions of RMarkdown to make your report neat and clean!  
+
+## Libraries
+```{r}
+if (!require("tidyverse")) install.packages('tidyverse')
+```
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(shiny)
+library(shinydashboard)
+library(skimr)
+```
+
+## Data
+The data for this assignment come from the [University of California Information Center](https://www.universityofcalifornia.edu/infocenter). Admissions data were collected for the years 2010-2019 for each UC campus. Admissions are broken down into three categories: applications, admits, and enrollees. The number of individuals in each category are presented by demographic.  
+```{r}
+UC_admit <- readr::read_csv("data/UC_admit.csv")
+```
+
+**1. Use the function(s) of your choice to get an idea of the overall structure of the data frame, including its dimensions, column names, variable classes, etc. As part of this, determine if there are NA's and how they are treated.**  
+
+```{r}
+summary(UC_admit)
+```
+```{r}
+skim(UC_admit)
+```
+
+**2. The president of UC has asked you to build a shiny app that shows admissions by ethnicity across all UC campuses. Your app should allow users to explore year, campus, and admit category as interactive variables. Use shiny dashboard and try to incorporate the aesthetics you have learned in ggplot to make the app neat and clean.**
+
+
+```{r}
+options(scipen = 999)
+```
+
+```{r}
+UC_admit$Academic_Yr <- as.factor(UC_admit$Academic_Yr)
+```
+
+```{r, eval=FALSE, echo=TRUE}
+ui <- dashboardPage(
+  dashboardHeader(title = "University of California Admissions"),
+  dashboardSidebar(),
+  dashboardBody(
+  selectInput("y", "Select Filter", choices = c("Academic_Yr", "Campus", "Category"), selected = "Academic_Yr"),
+  plotOutput("plot", width = "500px", height = "400px"))
+)
+
+server <- function(input, output, session) { 
+ output$plot <- renderPlot({
+  UC_admit %>% 
+     filter(Ethnicity!="All") %>% 
+  ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill=input$y)) +
+  geom_col(position="dodge", alpha = 0.8, size=4)+
+  theme_light(base_size = 18) + 
+     labs(title= "University of California Admissions", x="Ethnicity", y="Number Students Admitted", fill = "Legend")+
+     theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  })
+  session$onSessionEnded(stopApp)
+}
+
+shinyApp(ui, server)
+```
+
+**3. Make alternate version of your app above by tracking enrollment at a campus over all of the represented years while allowing users to interact with campus, category, and ethnicity.**
+
+```{r}
+ui <- dashboardPage(
+  dashboardHeader(title = "University of California"),
+  dashboardSidebar(),
+  dashboardBody(
+  selectInput("y", "Select Filter", choices = c("Campus", "Category", "Ethnicity"), selected = "Campus"),
+  plotOutput("plot", width = "500px", height = "400px"))
+)
+server <- function(input, output, session) { 
+ output$plot <- renderPlot({
+  UC_admit %>% 
+  ggplot(aes_string(x = "Academic_Yr", y = "FilteredCountFR", fill=input$y)) +
+  geom_col(position="dodge", alpha = 0.8, size=4)+
+  theme_light(base_size = 18) + 
+     labs(title= "University of California Admissions", x="Academic Year", y="Number Students Admitted", fill = "Legend")+
+     theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  })
+  session$onSessionEnded(stopApp)
+  }
+shinyApp(ui, server)
+```
+
+## Push your final code to GitHub!
+Please be sure that you check the `keep md` file in the knit preferences. 
