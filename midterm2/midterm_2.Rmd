@@ -71,6 +71,7 @@ popu_tidy$year <- as.integer(popu_tidy$year)
 popu_tidy
 
 ```
+
 ```{r}
 skim(income)
 ```
@@ -88,7 +89,6 @@ income_tidy
 ```{r}
 skim(life_expectancy)
 ```
-
 
 ```{r}
 life_exp_tidy <- life_expectancy %>% 

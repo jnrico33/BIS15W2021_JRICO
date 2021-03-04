@@ -1,7 +1,7 @@
 ---
 title: "Lab 13 Homework"
 author: "Jessica Rico"
-date: "2021-03-02"
+date: "2021-03-03"
 output:
   html_document: 
     theme: spacelab
@@ -30,10 +30,10 @@ if (!require("tidyverse")) install.packages('tidyverse')
 ```
 
 ```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.0.6     v dplyr   1.0.4
-## v tidyr   1.1.2     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
+## √ ggplot2 3.3.3     √ purrr   0.3.4
+## √ tibble  3.1.0     √ dplyr   1.0.4
+## √ tidyr   1.1.3     √ stringr 1.4.0
+## √ readr   1.4.0     √ forcats 0.5.1
 ```
 
 ```
@@ -128,8 +128,8 @@ Table: Data summary
 
 **Variable type: numeric**
 
-|skim_variable   | n_missing| complete_rate|    mean|       sd|   p0|    p25|    p50|    p75|   p100|hist                                     |
-|:---------------|---------:|-------------:|-------:|--------:|----:|------:|------:|------:|------:|:----------------------------------------|
+|skim_variable   | n_missing| complete_rate|    mean|       sd|   p0|    p25|    p50|    p75|   p100|hist  |
+|:---------------|---------:|-------------:|-------:|--------:|----:|------:|------:|------:|------:|:-----|
 |Academic_Yr     |         0|             1| 2014.50|     2.87| 2010| 2012.0| 2014.5| 2017.0|   2019|▇▇▇▇▇ |
 |FilteredCountFR |         1|             1| 7142.63| 13808.91|    1|  447.5| 1837.0| 6899.5| 113755|▇▁▁▁▁ |
 
@@ -195,6 +195,10 @@ server <- function(input, output, session) {
   session$onSessionEnded(stopApp)
   }
 shinyApp(ui, server)
+```
+
+```
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 ```
 
 `<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>`{=html}
