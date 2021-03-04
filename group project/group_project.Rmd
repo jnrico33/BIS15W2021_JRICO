@@ -1,0 +1,211 @@
+---
+title: "Group"
+author: "Jessica Rico"
+date: "3/2/2021"
+output: 
+  
+  html_document: 
+    keep_md: yes
+    toc: yes
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+if (!require("tidyverse")) install.packages('tidyverse')
+```
+
+```{r}
+library(tidyverse)
+library(rmarkdown)
+library(shiny)
+library(shinydashboard)
+library(skimr)
+library(janitor)
+library(here)
+library(RColorBrewer)
+library(paletteer)
+library(ggthemes)
+library(naniar)
+library(ggpubr)
+options(scipen=999)
+```
+
+## Term GPA's by Grade
+
+```{r}
+gpa19 <- readr::read_csv("1920 Term gpa.csv")
+gpa19 <- janitor::clean_names(gpa19)
+gpa19$grade <- as.factor(gpa19$grade)
+gpa19
+
+#This is the dataset which shows the term GPA's for the first semester of 2019/2020. Term_1= progress report grades, term_2=report card grades
+```
+
+
+```{r}
+term_2_19 <- gpa19%>%
+  select(grade, term_2)
+
+term_2_19 %>%
+   group_by(grade)%>%
+  summarise(mean(term_2, na.rm=T), totaln=n(), na.rm=T)
+```
+
+```{r}
+eightgpa_19 <- term_2_19%>%
+  filter(grade=="8")%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+eightgpa_19
+  
+```
+
+```{r}
+sevengpa_19 <- term_2_19%>%
+  filter(grade=="7")%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+sevengpa_19
+```
+```{r}
+sixgpa_19 <- term_2_19%>%
+  filter(grade=="6")%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+sixgpa_19
+```
+
+
+
+
+```{r}
+gpa20 <- readr::read_csv("2021TermGPA.csv")
+gpa20 <- janitor::clean_names(gpa20)
+gpa20$grade <- as.factor(gpa20$grade)
+gpa20
+
+#This is the dataset which shows the term GPA's for the first semester of 2020/2021. Term_1= progress report grades, term_2=report card grades
+```
+
+
+
+```{r}
+term_2_20 <- gpa20%>%
+  select(grade, term_2)
+
+term_2_20 %>%
+  group_by(grade)%>%
+  summarise(mean(term_2, na.rm=T), totaln=n(), na.rm=T)
+
+```
+```{r}
+gpabyyear19 <- term_2_19%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+gpabyyear19
+```
+
+
+```{r}
+gpabyyear20 <- term_2_20%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+gpabyyear20
+```
+
+```{r}
+
+```
+
+
+
+
+
+
+```{r}
+eightgpa_20 <- term_2_20%>%
+  filter(grade=="8")%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+eightgpa_20
+```
+
+
+
+```{r}
+sevengpa_20 <- term_2_20%>%
+  filter(grade=="7")%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+sevengpa_20
+```
+
+
+```{r}
+sixgpa_20 <- term_2_20%>%
+  filter(grade=="6")%>%
+  group_by(term_2)%>%
+  summarise(totaln=n())
+sixgpa_20
+```
+
+
+
+
+
+
+## Attendance Rates by Year
+```{r}
+attendancerate19 <- readr::read_csv("1920 attendance rates.csv")
+attendancerate19 <- janitor::clean_names(attendancerate19)
+attendancerate19
+```
+
+
+```{r}
+attendancerate20 <- readr::read_csv("2021 attendance rates.csv")
+attendancerate20 <- janitor:: clean_names(attendancerate20)
+attendancerate20
+```
+
+## Attendance Reasons by Year
+
+```{r}
+reason19 <- readr::read_csv("1920 attendance reason report.csv")
+```
+```{r}
+reason19tidy <- reason19%>% 
+  pivot_longer(-X1, # does not pivot
+               names_to = "attendance_code", 
+               values_to = "occurence"
+               )%>%
+  filter(X1=="Periods")%>%
+  select(attendance_code, occurence)%>%
+  arrange(desc(occurence))
+reason19tidy
+```
+
+
+```{r}
+reason20 <- readr::read_csv("2021 attendance reason report.csv")
+
+```
+```{r}
+reason20tidy <- reason20%>% 
+  pivot_longer(-X1, # does not pivot
+               names_to = "attendance_code", 
+               values_to = "occurence"
+               )%>%
+  filter(X1=="Periods")%>%
+  select(attendance_code, occurence)%>%
+  arrange(desc(occurence))
+reason20tidy
+
+```
+
+
+

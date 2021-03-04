@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+author: "Jessica Rico"
+date: "2/16/2021"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+closures <- readr::read_csv("11-12_School_Closure.csv")
+closures
+```
+
+
+```{r}
+classbourough <- readr::read_csv("2010-2011_Class_Size_Borough.csv")
+classbourough
+```
+```{r}
+classdistrict <- readr::read_csv("2010-2011_Class_Size_District.csv")
+classdistrict
+
+```
+```{r}
+testscores<- readr::read_csv("2006_-_2011_NYS_Math_Test_Results_by_Grade_-_Citywide_-_by_Race-Ethnicity.csv")
+testscores
+
+```
+
+```{r}
+testboroughs <- readr::read_csv("2006_-_2012_Math_Test_Results_-_Borough_-_SWD.csv")
+testboroughs
+```
+

@@ -1,0 +1,142 @@
+---
+title: "distancelearning"
+author: "Jessica Rico"
+date: "3/3/2021"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+if (!require("tidyverse")) install.packages('tidyverse')
+```
+
+```{r}
+library(tidyverse)
+library(rmarkdown)
+library(shiny)
+library(shinydashboard)
+library(skimr)
+library(janitor)
+library(here)
+library(RColorBrewer)
+library(paletteer)
+library(ggthemes)
+library(naniar)
+library(ggpubr)
+options(scipen=999)
+```
+
+
+## Loading datasets
+
+```{r}
+att_rates <- readr::read_csv("att_rates.csv")
+att_rates <- janitor::clean_names(att_rates)
+att_rates$academic_year <- as.factor(att_rates$academic_year)
+att_rates
+
+
+#This shows the attendance rate for attendance month 1-5 (2019_1= 2019 academic year, month 1). This also includes the number of students enrolled and withdrawn from the middle school during the respective month. 
+```
+
+```{r}
+att_ratestidy <- att_rates%>%
+  pivot_longer(-academic_year, 
+               names_to = "academic_year_values", 
+               values_to = "student_numbers")
+att_ratestidy
+```
+
+
+
+
+```{r, eval=FALSE, echo=TRUE}
+ui <- dashboardPage(
+    dashboardHeader(title = "Attendance, Enrollment, and Withdrawals by Month"),
+  dashboardSidebar(),
+  dashboardBody(
+  selectInput("x", "Select X variable", choices = c("academic_year_values"), selected = "academic_year"),
+  plotOutput("plot", width = "800px", height = "400px"))
+)
+
+
+
+server <- function(input, output, session) { 
+ output$plot <- renderPlot({
+  att_ratestidy %>% 
+  ggplot(aes_string(x = "academic_year", y = "student_numbers", fill=input$x)) +
+  geom_col(position="dodge", alpha = 0.8, size=4)+
+  theme_light(base_size = 18) + 
+     labs(title= "Attendance Rates, Enrollment, and Withdrawals by Year and Month", x="Academic Year_Month", y="Student Numbers", fill = "Legend")+
+     theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  })
+  session$onSessionEnded(stopApp)
+  }
+shinyApp(ui, server)
+```
+
+
+
+
+```{r}
+term_gpa <- readr::read_csv("term_gpas.csv")
+term_gpa <- janitor::clean_names(term_gpa)
+term_gpa
+```
+
+
+
+
+```{r}
+term_2_gpa <- term_gpa%>%
+  select(year, grade, term_2)%>%
+  filter(grade!="Grade")
+term_2_gpa
+
+term_2_gpa$term_2<-as.numeric(term_2_gpa$term_2)
+
+term_2_gpa%>%
+  group_by(grade, year)%>%
+  summarise(mean(term_2, na.rm=T), totaln=n(), na.rm=T)
+  
+
+
+```
+
+
+
+
+```{r}
+att_reason <- readr::read_csv("att_reason_reports.csv")
+att_reason
+```
+
+
+
+
+```{r}
+names(att_reason)
+```
+
+
+```{r}
+#att_reason$year <- as.character(att_reason$year)
+
+#att_reasontidy <- att_reason%>%
+  #pivot_longer(-count_type,
+      #         -year, # does not pivot
+     #          names_to = "attendance_code", 
+    #           values_to = "occurence"
+   #            )%>%
+  #filter(count_type=="periods")%>%
+ # select(attendance_code, occurence)%>%
+#  arrange(desc(occurence))
+#att_reasontidy
+```
+
