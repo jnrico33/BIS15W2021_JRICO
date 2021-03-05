@@ -142,12 +142,17 @@ plotMissing(hyper, main="", reorder=1)
 
 
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 **7. Based on your answer from previous question, you probably noticed that there are gene markers without data. Please use the function `drop.nullmarkers` to remove markers that have no genotype data. After this, make a new summary to show the number of markers on each chromosome. How many gene markers were dropped? Where were the dropped markers located? Please use the data without nullmarkers for the following questions.**
 ```{r}
 drop.nullmarkers(hyper)
 ```
 
+</div>
 
 
 
@@ -161,6 +166,10 @@ summary(lod_score) %>%
 ```
 
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 
 **9. Based on your genome scan results, create a table which only includes those chromosomes with LOD > 1. Creates an interactive chart with LOD curves linked to estimated QTL effects for only those chromosomes with LOD > 1. Find the gene maker with the highest LOD score and describe how does the genetype of this marker influence the individual's phenotype.**
@@ -172,6 +181,7 @@ summary(lod_score, threshold=1)
 iplot_lod <- iplotScanone(lod_score, hyper, chr=c(1, 2, 4, 5, 6, 15))
 iplot_lod
 ```
+</div>
 
 
 
