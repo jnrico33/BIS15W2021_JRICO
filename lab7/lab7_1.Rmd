@@ -153,6 +153,7 @@ amniota_tidy <- amniota %>%
 ```
 
 Now let's run that function from problem #2 again to see how we did.
+
 ```{r}
 amniota_tidy %>% 
   summarise_all(~(sum(is.na(.))))

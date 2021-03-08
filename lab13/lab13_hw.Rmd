@@ -41,6 +41,9 @@ UC_admit <- readr::read_csv("data/UC_admit.csv")
 ```{r}
 summary(UC_admit)
 ```
+
+
+
 ```{r}
 skim(UC_admit)
 ```
@@ -52,9 +55,17 @@ skim(UC_admit)
 options(scipen = 999)
 ```
 
+
+
+
 ```{r}
 UC_admit$Academic_Yr <- as.factor(UC_admit$Academic_Yr)
 ```
+
+
+
+
+
 
 ```{r, eval=FALSE, echo=TRUE}
 ui <- dashboardPage(
