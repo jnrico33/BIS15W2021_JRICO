@@ -78,7 +78,7 @@ library(here)
 ```
 
 ```
-## here() starts at C:/Users/Jessica/Desktop/BIS15W2021_JRICO
+## here() starts at C:/Users/Jessica/Desktop/BIS15W2021_JRICO/BIS15W2021_JRICO
 ```
 
 ```r
